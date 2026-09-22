@@ -59,7 +59,7 @@ def get_vs(sim: pd.Series[float], obs: pd.Series[float]) -> float:
 def get_vd(sim: pd.Series[float], obs: pd.Series[float]) -> float:
     std_sim = sim.std()
     std_obs = obs.std()
-    return np.sign(std_sim - std_obs) * (1 - get_vs(sim, obs))
+    return float(np.sign(std_sim - std_obs) * (1 - get_vs(sim, obs)))
 
 
 def get_nse(sim: pd.Series[float], obs: pd.Series[float]) -> float:
