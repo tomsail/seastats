@@ -29,6 +29,7 @@ python = "^3.10"
 numpy = "*"
 pandas = {version = "*", extras = ["pyarrow", "performance"]}
 pyextremes = "*"
+deprecated = "*"
 
 [tool.poetry.group.dev.dependencies]
 covdefaults = "*"
@@ -39,6 +40,7 @@ pytest = "*"
 pytest-cov = "*"
 pandas-stubs = "*"
 nbval = "*"
+types-deprecated = "*"
 
 [build-system]
 requires = ["poetry-core"]

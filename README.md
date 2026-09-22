@@ -33,9 +33,9 @@ pd.DataFrame(dict(general, **storm), index=['abed'])
 ```
 this returns:
 
-| station |   bias |   rms |  rmse |    cr |   nse |  kge |       R1 |       R3 |     error |
-| :------ | -----: | ----: | ----: | ----: | ----: | ---: | -------: | -------: | --------: |
-| abed    | -0.007 | 0.086 | 0.086 | 0.817 | 0.677 | 0.81 | 0.237364 | 0.147163 | 0.0938142 |
+| station |     mb |  urmsd |  rmsd |    cc |   nse |  kge |       R1 |       R3 |     error |
+| :------ | -----: | -----: | ----: | ----: | ----: | ---: | -------: | -------: | --------: |
+| abed    | -0.007 |  0.086 | 0.086 | 0.817 | 0.677 | 0.81 | 0.237364 | 0.147163 | 0.0938142 |
 
 
 ## Install
@@ -59,10 +59,10 @@ mamba install -c conda-forge seastats
  * **round** (int). (Optional) Apply rounding to the results to. Default is no rounding (value is `-1`)
 
 Returns a dictionary containing the calculated metrics and their corresponding values. With 2 types of metrics:
-* [The "general" metrics](#general-metrics): All the basic metrics needed for signal comparison (RMSE, RMS, Correlation etc..). See details below
-  * `bias`: Bias
-  * `rmse`: Root Mean Square Error
-  * `rms`: Root Mean Square
+* [The "general" metrics](#general-metrics): All the basic metrics needed for signal comparison (RMSD, URMSD, Correlation etc..). See details below
+  * `mb`: Mean Bias
+  * `rmsd`: Root Mean Square Difference
+  * `urmsd`: Unbiased Root Mean Square Difference (centered RMSD)
   * `rms_95`: Root Mean Square for data points above 95th percentile
   * `sim_mean`: Mean of simulated values
   * `obs_mean`: Mean of observed values
@@ -72,8 +72,8 @@ Returns a dictionary containing the calculated metrics and their corresponding v
   * `mse`: Mean Square Error
   * `nse`: Nash-Sutcliffe Efficiency
   * `lambda`: Lambda index
-  * `cr`: Pearson Correlation coefficient
-  * `cr_95`: Pearson Correlation coefficient for data points above 95th percentile
+  * `cc`: Pearson Correlation Coefficient
+  * `cc_95`: Pearson Correlation Coefficient for data points above 95th percentile
   * `slope`: Slope of Model/Obs correlation
   * `intercept`: Intercept of Model/Obs correlation
   * `slope_pp`: Slope of Model/Obs correlation of percentiles
@@ -97,9 +97,9 @@ Returns a dictionary containing the calculated metrics and their corresponding v
 
 ## General metrics
 ### A. Dimensional Statistics:
-#### Mean Error (or Bias)
+#### Mean Bias (MB)
 $$\langle x_c - x_m \rangle = \langle x_c \rangle - \langle x_m \rangle$$
-#### RMSE (Root Mean Squared Error)
+#### RMSD (Root Mean Square Difference)
 $$\sqrt{\langle(x_c - x_m)^2\rangle}$$
 #### Mean-Absolute Error (MAE):
 $$\langle |x_c - x_m| \rangle$$
